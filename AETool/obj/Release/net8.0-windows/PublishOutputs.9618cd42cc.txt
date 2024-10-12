@@ -1,5 +1,0 @@
-C:\Users\2behi\Desktop\FingerPoMexico\AETool.exe
-C:\Users\2behi\Desktop\FingerPoMexico\AETool.dll
-C:\Users\2behi\Desktop\FingerPoMexico\AETool.deps.json
-C:\Users\2behi\Desktop\FingerPoMexico\AETool.runtimeconfig.json
-C:\Users\2behi\Desktop\FingerPoMexico\AETool.pdb
