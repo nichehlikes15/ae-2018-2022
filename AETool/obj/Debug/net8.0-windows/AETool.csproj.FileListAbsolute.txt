@@ -1,0 +1,69 @@
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0-windows\AETool.exe
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0-windows\AETool.deps.json
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0-windows\AETool.runtimeconfig.json
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0-windows\AETool.dll
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0-windows\AETool.pdb
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\AETool.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\AETool.AssemblyInfoInputs.cache
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\AETool.AssemblyInfo.cs
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\AETool.csproj.CoreCompileInputs.cache
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\AETool.dll
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\refint\AETool.dll
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\AETool.pdb
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\AETool.genruntimeconfig.cache
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0-windows\ref\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.exe
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.deps.json
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.runtimeconfig.json
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.pdb
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.AssemblyReference.cache
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.AssemblyInfoInputs.cache
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.AssemblyInfo.cs
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.CoreCompileInputs.cache
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.Up2Date
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\refint\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.pdb
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.genruntimeconfig.cache
+C:\Users\Snytex\Downloads\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\ref\AETool.dll
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.exe
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.deps.json
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.runtimeconfig.json
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.dll
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.pdb
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.AssemblyReference.cache
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.AssemblyInfoInputs.cache
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.AssemblyInfo.cs
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.CoreCompileInputs.cache
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.Up2Date
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.dll
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\refint\AETool.dll
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.pdb
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.genruntimeconfig.cache
+C:\Users\2behi\source\repos\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\ref\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.exe
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.deps.json
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.runtimeconfig.json
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\AETool.pdb
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\Colorful.Console.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.AssemblyReference.cache
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.AssemblyInfoInputs.cache
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.AssemblyInfo.cs
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.CoreCompileInputs.cache
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.csproj.Up2Date
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\refint\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.pdb
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\AETool.genruntimeconfig.cache
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\obj\Debug\net8.0-windows\ref\AETool.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\System.CodeDom.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\System.Management.dll
+C:\Users\Snytex\Downloads\AEther-tool-main (1)\AEther-tool-main\AETHER TOOL C# LOADER\AETool\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll

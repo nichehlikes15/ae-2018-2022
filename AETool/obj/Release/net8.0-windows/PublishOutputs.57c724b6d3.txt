@@ -1,0 +1,6 @@
+C:\Users\2behi\Desktop\snytex\AETool.exe
+C:\Users\2behi\Desktop\snytex\AETool.dll
+C:\Users\2behi\Desktop\snytex\AETool.deps.json
+C:\Users\2behi\Desktop\snytex\AETool.runtimeconfig.json
+C:\Users\2behi\Desktop\snytex\AETool.pdb
+C:\Users\2behi\Desktop\snytex\Newtonsoft.Json.dll

@@ -1,0 +1,14 @@
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0\AETool.exe
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0\AETool.deps.json
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0\AETool.runtimeconfig.json
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0\AETool.dll
+C:\Users\2behi\source\repos\AETool\AETool\bin\Debug\net8.0\AETool.pdb
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\AETool.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\AETool.AssemblyInfoInputs.cache
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\AETool.AssemblyInfo.cs
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\AETool.csproj.CoreCompileInputs.cache
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\AETool.dll
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\refint\AETool.dll
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\AETool.pdb
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\AETool.genruntimeconfig.cache
+C:\Users\2behi\source\repos\AETool\AETool\obj\Debug\net8.0\ref\AETool.dll
