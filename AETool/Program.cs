@@ -1,6 +1,3 @@
-﻿// nicht wundern bitte dass der ascii text weg ist ich teste momentan noch ein wenig wie man das besser machen könnte
-// Die rec net API funktioniert btw
-// Falls du wissen willst wie dm einfach
 
 using System;
 using System.Diagnostics;
