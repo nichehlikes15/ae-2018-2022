@@ -204,6 +204,14 @@ namespace AE
                         minId = 3314553;
                         maxId = 11159630;
                         break;
+                    case 2021:
+                        minId = 11159631;
+                        maxId = 40734808;
+                        break;
+                    case 2022:
+                        minId = 40734809;
+                        maxId = 83276444;
+                        break;
                     default:
                         Console.WriteLine("Invalid year selection.");
                         break;
