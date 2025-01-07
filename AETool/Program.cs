@@ -1,4 +1,3 @@
-
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -295,7 +294,8 @@ namespace AE
                 Console.WriteLine("                                       ╔ Credits ════════════════════════════════╗", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ║                                         ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ║       Snytex - Owner & Developer        ║", Color.FromArgb(R, G, B));
-                Console.WriteLine("                                       ║        2Benhindert - Development        ║", Color.FromArgb(R, G, B));
+                Console.WriteLine("                                       ║        2Benhindert - Development        ║
+                                                                          ║      nichehlikes15 - Redevelopement     ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ║                                         ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ╚═════════════════════════════════════════╝", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                                Press any key to return           ", Color.FromArgb(R, G, B));
