@@ -14,6 +14,7 @@ using Colorful;
 using AETool;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.Design;
+using System.Collections.Generic;
 #pragma warning disable
 
 namespace AE
@@ -56,6 +57,28 @@ namespace AE
         private static System.Threading.Timer titleTimer;
         private static Random random = new Random();
         private static string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        private const string ConfigFilePath = "config.json";
+
+        private static dynamic LoadConfig()
+        {
+            if (File.Exists(ConfigFilePath))
+            {
+                string json = File.ReadAllText(ConfigFilePath);
+                return JsonConvert.DeserializeObject<dynamic>(json);
+            }
+            else
+            {
+                var defaultConfig = new { amount_of_threads = 1 };
+                SaveConfig(defaultConfig);
+                return defaultConfig;
+            }
+        }
+
+        private static void SaveConfig(dynamic config)
+        {
+            string json = JsonConvert.SerializeObject(config, Formatting.Indented);
+            File.WriteAllText(ConfigFilePath, json);
+        }
 
         // Methode für Opacity
         public static void SetConsoleOpacity(byte opacity)
@@ -96,7 +119,8 @@ namespace AE
                                                        / /| | / __/   / / / /_/ / __/ / /_/ /
                                                       / ___ |/ /___  / / / __  / /___/ _, _/ 
                                                      /_/  |_/_____/ /_/ /_/ /_/_____/_/ |_|  
-                                                    
+                                                  https://github.com/nichehlikes15/ae-2018-2022    
+
             """;
 
         static string ReadInput(int maxLength)
@@ -133,6 +157,8 @@ namespace AE
             int G = 228;
             int B = 104;
 
+            dynamic config = LoadConfig();
+
             StartRandomTitleChange();
 
             // Timer für anti-debug und opacity
@@ -145,7 +171,7 @@ namespace AE
             Console.WriteLine("Connecting...");
             Console.Clear();
 
-            Console.Title = "AETHER TOOL - Made And Written With Love By Snytex & 2Behindert";
+            Console.Title = "AETHER TOOL - Redeveloped by nichehlikes 15. Made And Written With Love By Snytex & 2Behindert";
             Console.ResetColor();
             Console.Clear();
 
@@ -156,9 +182,10 @@ namespace AE
             Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
             Console.WriteLine("                                       ╔ Options ════════════════════════════════╗", Color.FromArgb(R, G, B));
             Console.WriteLine("                                       ║ [1] Scrape Usernames                    ║", Color.FromArgb(R, G, B));
-            Console.WriteLine("                                       ║ [2] User Lookup [DEPCRECATED]           ║", Color.FromArgb(R, G, B));
+            Console.WriteLine("                                       ║ [2] User Lookup                         ║", Color.FromArgb(R, G, B));
             Console.WriteLine("                                       ║ [3] Credits                             ║", Color.FromArgb(R, G, B));
-            Console.WriteLine("                                       ║ [4] Exit                                ║", Color.FromArgb(R, G, B));
+            Console.WriteLine("                                       ║ [4] Settings                            ║", Color.FromArgb(R, G, B));
+            Console.WriteLine("                                       ║ [5] Exit                                ║", Color.FromArgb(R, G, B));
             Console.WriteLine("                                       ╚═════════════════════════════════════════╝", Color.FromArgb(R, G, B));
             Console.WriteLine("                                           Enter Your Option And Press Enter      ", Color.FromArgb(R, G, B)); 
             string input = Console.ReadLine();
@@ -231,9 +258,9 @@ namespace AE
 
             else if (input == "2")
             {
-                Console.WriteLine("Feature has been depcrecated");
-                Thread.Sleep(3000);
-                goto begin;
+                //Console.WriteLine("Feature has been depcrecated");
+                //Thread.Sleep(3000);
+                //goto begin;
                 Console.Clear();
                 Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ╔ Lookup ═════════════════════════════════╗", Color.FromArgb(R, G, B));
@@ -244,7 +271,7 @@ namespace AE
                 Console.WriteLine("                                       ║Level:                                   ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ║Date of Creation:                        ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ╚═════════════════════════════════════════╝", Color.FromArgb(R, G, B));
-                Console.SetCursorPosition(50, 7);
+                Console.SetCursorPosition(51, 7);
                 string id = ReadInput(8);
                 if (int.TryParse(id, out int id_int))
                 {
@@ -252,9 +279,7 @@ namespace AE
 
                     Console.WriteLine("Fetching player data...");
 
-                    // Get the username data
                     Dictionary<string, object> usernameData = await Api.GetUsername(id);
-                    // Get the player data
                     List<Dictionary<string, object>> playerData = await Api.GetPlayerData(playerIds);
 
                     if (usernameData != null && playerData != null && playerData.Count > 0)
@@ -272,7 +297,11 @@ namespace AE
                         Console.SetCursorPosition(58, 11); // Position for Level
                         Console.WriteLine(level, Color.FromArgb(R, G, B));
                         Console.SetCursorPosition(58, 12); // Position for Date of Creation
-                        Console.WriteLine(creationDate, Color.FromArgb(R, G, B));
+                        Console.WriteLine(creationDate, Color.FromArgb(R, G, B));     
+                        Console.SetCursorPosition(0, 14); // Position for Date of Creation            
+                        Console.WriteLine("                                                Press any key to return           ", Color.FromArgb(R, G, B));
+                        Console.ReadKey();
+                        goto begin;
                     }
                     else
                     {
@@ -292,16 +321,38 @@ namespace AE
                 Console.Clear();
                 Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ╔ Credits ════════════════════════════════╗", Color.FromArgb(R, G, B));
-                Console.WriteLine("                                       ║                                         ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ║       Snytex - Owner & Developer        ║", Color.FromArgb(R, G, B));
-                Console.WriteLine("                                       ║        2Benhindert - Development        ║
-                                                                          ║      nichehlikes15 - Redevelopement     ║", Color.FromArgb(R, G, B));
+                Console.WriteLine("                                       ║        2Benhindert - Development        ║", Color.FromArgb(R, G, B));
+                Console.WriteLine("                                       ║      nichehlikes15 - Redevelopement     ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ║                                         ║", Color.FromArgb(R, G, B));
+                Console.WriteLine("                                       ║          for RR Market & Hash           ║", Color.FromArgb(R, G, B));
+                Console.WriteLine("                                       ║         discord.gg/therrmarket          ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ╚═════════════════════════════════════════╝", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                                Press any key to return           ", Color.FromArgb(R, G, B));
+                Console.ReadKey();
+                goto begin;
+            }            
+            else if (input == "4")
+            {
+                Console.Clear();
+                Color textColor = Color.FromArgb(R, G, B);
+                Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
+                int threadCount = config.amount_of_threads;
+                int padding = 32 - threadCount.ToString().Length;
+                Console.WriteLine("                                       ╔ Settings ════════════════════════════════╗", textColor);
+                Console.WriteLine($"                                       ║ Threads: {threadCount}{new string(' ', padding)}║", textColor);
+                Console.WriteLine("                                       ╚══════════════════════════════════════════╝", textColor);
+                Console.SetCursorPosition(50 + threadCount.ToString().Length, 7);
+                string threadInput = ReadInput(4);
+
+                if (int.TryParse(threadInput, out int newThreadCount) && newThreadCount > 0)
+                {
+                    config.amount_of_threads = newThreadCount;
+                    SaveConfig(config);
+                }
                 goto begin;
             }
-            else if (input == "4")
+            else if (input == "5")
             {
                 Environment.Exit(0);
             }
@@ -530,6 +581,77 @@ namespace AE
                     string createdAt = user.ContainsKey("createdAt") ? user["createdAt"].ToString() : "N/A";
                     writer.WriteLine($"{username}");
                 }
+            }
+        }
+    } 
+    public class Api
+    {
+        private static readonly HttpClient client = new HttpClient();
+        public static async Task<Dictionary<string, object>> GetUsername(string playerId)
+        {
+            string accountsApi = "https://accounts.rec.net/account/bulk";
+
+            try
+            {
+                var request = new HttpRequestMessage
+                {
+                    RequestUri = new Uri($"{accountsApi}?id={playerId}"),
+                    Method = HttpMethod.Get,
+                };
+                request.Headers.Add("Accept", "*/*");
+
+                HttpResponseMessage response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    List<Dictionary<string, object>> data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(responseContent);
+                    return data.FirstOrDefault();
+                }
+                else
+                {
+                    Console.WriteLine($"Error retrieving username: {response.StatusCode}");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Request Error: {e.Message}");
+                return null;
+            }
+        }
+        public static async Task<List<Dictionary<string, object>>> GetPlayerData(List<int> playerIds)
+        {
+            string accountsApi = "https://api.rec.net/api/players/v2/progression/bulk";
+
+            try
+            {
+                string idsQuery = string.Join(",", playerIds);
+                var request = new HttpRequestMessage
+                {
+                    RequestUri = new Uri($"{accountsApi}?id={idsQuery}"),
+                    Method = HttpMethod.Get,
+                };
+                request.Headers.Add("Accept", "*/*");
+
+                HttpResponseMessage response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    List<Dictionary<string, object>> data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(responseContent);
+                    return data;
+                }
+                else
+                {
+                    Console.WriteLine($"Error retrieving player data: {response.StatusCode}");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Request Error: {e.Message}");
+                return null;
             }
         }
     }
