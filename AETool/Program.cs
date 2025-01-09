@@ -201,7 +201,7 @@ namespace AE
                 Console.WriteLine("                                       ║ Amount:                                 ║", textColor);
                 Console.WriteLine("                                       ╚═════════════════════════════════════════╝", textColor);
 
-                Console.SetCursorPosition(46, 7);
+                Console.SetCursorPosition(46, 8);
                 string year = ReadInput(4);
                 int year_int = int.Parse(year);
 
@@ -243,15 +243,15 @@ namespace AE
                         break;
                 }
 
-                Console.SetCursorPosition(52, 8);
+                Console.SetCursorPosition(52, 9);
                 string minLevelstr = ReadInput(2);
                 int minLevel = int.Parse(minLevelstr);
 
-                Console.SetCursorPosition(48, 9);
+                Console.SetCursorPosition(48, 10);
                 string amountstr = ReadInput(6);
                 int amount = int.Parse(amountstr);
 
-                Console.SetCursorPosition(0, 11);
+                Console.SetCursorPosition(0, 12);
 
                 await Scraper.StartScrapingAsync(year_int, minLevel, amount, minId, maxId);
             }
@@ -342,7 +342,7 @@ namespace AE
                 Console.WriteLine("                                       ╔ Settings ════════════════════════════════╗", textColor);
                 Console.WriteLine($"                                       ║ Threads: {threadCount}{new string(' ', padding)}║", textColor);
                 Console.WriteLine("                                       ╚══════════════════════════════════════════╝", textColor);
-                Console.SetCursorPosition(50 + threadCount.ToString().Length, 7);
+                Console.SetCursorPosition(50 + threadCount.ToString().Length, 8);
                 string threadInput = ReadInput(4);
 
                 if (int.TryParse(threadInput, out int newThreadCount) && newThreadCount > 0)
