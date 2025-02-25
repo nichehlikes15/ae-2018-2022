@@ -15,6 +15,7 @@ using AETool;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.Design;
 using System.Collections.Generic;
+using System.Numerics;
 #pragma warning disable
 
 namespace AE
@@ -58,7 +59,6 @@ namespace AE
         private static Random random = new Random();
         private static string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         private const string ConfigFilePath = "config.json";
-
         private static dynamic LoadConfig()
         {
             if (File.Exists(ConfigFilePath))
@@ -68,7 +68,7 @@ namespace AE
             }
             else
             {
-                var defaultConfig = new { amount_of_threads = 1 };
+                var defaultConfig = new { amount_of_threads = 1, allow_juniors = false };
                 SaveConfig(defaultConfig);
                 return defaultConfig;
             }
@@ -271,7 +271,7 @@ namespace AE
                 Console.WriteLine("                                       ║Level:                                   ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ║Date of Creation:                        ║", Color.FromArgb(R, G, B));
                 Console.WriteLine("                                       ╚═════════════════════════════════════════╝", Color.FromArgb(R, G, B));
-                Console.SetCursorPosition(51, 7);
+                Console.SetCursorPosition(51, 8);
                 string id = ReadInput(8);
                 if (int.TryParse(id, out int id_int))
                 {
@@ -290,28 +290,28 @@ namespace AE
                         string creationDate = usernameData.ContainsKey("createdAt") ? usernameData["createdAt"].ToString() : "N/A";
 
                         // Display the fetched data in the box
-                        Console.SetCursorPosition(58, 9); // Position for Username
+                        Console.SetCursorPosition(58, 10); // Position for Username
                         Console.WriteLine(usernamestr, Color.FromArgb(R, G, B));
-                        Console.SetCursorPosition(58, 10); // Position for Displayname
+                        Console.SetCursorPosition(58, 11); // Position for Displayname
                         Console.WriteLine(displayname, Color.FromArgb(R, G, B));
-                        Console.SetCursorPosition(58, 11); // Position for Level
+                        Console.SetCursorPosition(58, 12); // Position for Level
                         Console.WriteLine(level, Color.FromArgb(R, G, B));
-                        Console.SetCursorPosition(58, 12); // Position for Date of Creation
+                        Console.SetCursorPosition(58, 13); // Position for Date of Creation
                         Console.WriteLine(creationDate, Color.FromArgb(R, G, B));     
-                        Console.SetCursorPosition(0, 14); // Position for Date of Creation            
+                        Console.SetCursorPosition(0, 15); // Position for Date of Creation            
                         Console.WriteLine("                                                Press any key to return           ", Color.FromArgb(R, G, B));
                         Console.ReadKey();
                         goto begin;
                     }
                     else
                     {
-                        Console.SetCursorPosition(50, 15);
+                        Console.SetCursorPosition(50, 16);
                         Console.WriteLine("Failed to fetch player data or no data available.", Color.FromArgb(R, G, B));
                     }
                 }
                 else
                 {
-                    Console.SetCursorPosition(50, 15);
+                    Console.SetCursorPosition(50, 16);
                     Console.WriteLine("Invalid ID format. Please enter a numeric Player ID.", Color.FromArgb(R, G, B));
                 }
             }
@@ -338,17 +338,78 @@ namespace AE
                 Color textColor = Color.FromArgb(R, G, B);
                 Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
                 int threadCount = config.amount_of_threads;
-                int padding = 32 - threadCount.ToString().Length;
+                int threadPadding = 32 - threadCount.ToString().Length;
+                bool juniorsCount = config.allow_juniors;
+                int juniorsCountInt = juniorsCount ? 1 : 0;
+                int juniorsPadding = 28 - threadCount.ToString().Length;
                 Console.WriteLine("                                       ╔ Settings ════════════════════════════════╗", textColor);
-                Console.WriteLine($"                                       ║ Threads: {threadCount}{new string(' ', padding)}║", textColor);
+                Console.WriteLine($"                                       ║ Threads: {threadCount}{new string(' ', threadPadding)}║", textColor);
+                Console.WriteLine($"                                       ║ Allow juniors: {juniorsCountInt}{new string(' ', juniorsPadding)}║", textColor);
                 Console.WriteLine("                                       ╚══════════════════════════════════════════╝", textColor);
-                Console.SetCursorPosition(50 + threadCount.ToString().Length, 8);
-                string threadInput = ReadInput(4);
+                Console.SetCursorPosition(51 + threadCount.ToString().Length, 8);
+                string threadInput = ReadInput(3);
 
                 if (int.TryParse(threadInput, out int newThreadCount) && newThreadCount > 0)
                 {
                     config.amount_of_threads = newThreadCount;
                     SaveConfig(config);
+                    Console.Clear();
+                    Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
+                    Console.WriteLine("                                       ╔ Settings ════════════════════════════════╗", textColor);
+                    Console.WriteLine($"                                       ║ Threads: {newThreadCount}{new string(' ', threadPadding)}║", textColor);
+                    Console.WriteLine($"                                       ║ Allow juniors: {juniorsCountInt}{new string(' ', juniorsPadding)}║", textColor);
+                    Console.WriteLine("                                       ╚══════════════════════════════════════════╝", textColor);
+                }
+
+                Console.SetCursorPosition(53 + juniorsCount.ToString().Length, 9);
+                string juniorsInput = "";
+                while (true)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey(intercept: true);
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        break;
+                    }
+
+                    if (key.KeyChar == '1' || key.KeyChar == '0')
+                    {
+                        juniorsInput = key.KeyChar.ToString(); 
+                        Console.Clear();
+                        Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ╔ Settings ════════════════════════════════╗", textColor);
+                        Console.WriteLine($"                                       ║ Threads: {newThreadCount}{new string(' ', threadPadding)}║", textColor);
+                        Console.WriteLine($"                                       ║ Allow juniors: {juniorsCountInt}{new string(' ', juniorsPadding)}║", textColor);
+                        Console.WriteLine("                                       ╚══════════════════════════════════════════╝", textColor);
+
+                        Console.SetCursorPosition(56 + juniorsCountInt.ToString().Length, 9);
+                        Console.Write(juniorsInput);
+
+                        if (juniorsInput == "1")
+                        {
+                            Console.Write(" [True]", textColor);
+                            Console.SetCursorPosition(57 + juniorsCountInt.ToString().Length, 9);
+                        }
+                        else if (juniorsInput == "0")
+                        {
+                            Console.Write(" [False]", textColor);
+                            Console.SetCursorPosition(57 + juniorsCountInt.ToString().Length, 9);
+                        }
+                    }
+                }
+
+                if (juniorsInput == "1")
+                {
+                    config.allow_juniors = true;
+                    SaveConfig(config);
+                }
+                else if (juniorsInput == "0")
+                {
+                    config.allow_juniors = false;
+                    SaveConfig(config);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number (1 [True] or 0 [False]).");
                 }
                 goto begin;
             }
@@ -366,6 +427,10 @@ namespace AE
 
         public static async Task StartScrapingAsync(int year, int minLevel, int amount, int minId, int maxId)
         {
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             string configJson = await File.ReadAllTextAsync("config.json");
             dynamic config = JsonConvert.DeserializeObject(configJson);
 
@@ -412,7 +477,30 @@ namespace AE
                                 {
                                     Dictionary<string, object> playerInfo = await GetUsernameAsync(playerId.ToString());
 
-                                    if (playerInfo != null && playerInfo.ContainsKey("username"))
+                                    bool checkJunior = false;
+
+                                    if (playerInfo["isJunior"] is bool isJuniorValue)
+                                    {
+                                        checkJunior = isJuniorValue;
+                                    }
+                                    else if (playerInfo["isJunior"] is JValue jValue && jValue.Type == JTokenType.Boolean)
+                                    {
+                                        checkJunior = jValue.Value<bool>();
+                                    }
+                                    else if (bool.TryParse(playerInfo["isJunior"]?.ToString(), out bool parsedValue))
+                                    {
+                                        checkJunior = parsedValue;
+                                    }
+
+                                    bool allowJunior = config.allow_junior; 
+
+                                    bool junior = false;
+                                    if (allowJunior || (checkJunior == allowJunior)) 
+                                    {
+                                        junior = true;
+                                    }
+
+                                    if (playerInfo != null && playerInfo.ContainsKey("username") && junior == true)
                                     {
                                         playerInfo["Level"] = level;
                                         string createdAt = playerInfo.ContainsKey("createdAt") ? playerInfo["createdAt"].ToString() : "N/A";
@@ -437,8 +525,14 @@ namespace AE
 
                                                     if (scrapedUsernames.Count >= amount)
                                                     {
-                                                        SaveUsernamesToFile(scrapedUsernames);
-                                                        return; // Exit the method when the target is reached
+                                                        SaveUsernamesToFile(scrapedUsernames);                                                     
+                                                        stopwatch.Stop();
+                                                        TimeSpan elapsed = stopwatch.Elapsed;
+                                                        Color finishedColor = Color.FromArgb(0, 0, 0);
+                                                        Console.WriteLine("");
+                                                        Console.WriteLine($"Finshed scraping usernames with a elapsed time of {elapsed.Minutes} minutes and {elapsed.Seconds} seconds", finishedColor);
+                                                        Console.WriteLine("Enjoy testing, with much love from nichehlikes15 <3", finishedColor);
+                                                        //goto Program.begin; // Exit the method when the target is reached
                                                     }
                                                 }
                                             }
