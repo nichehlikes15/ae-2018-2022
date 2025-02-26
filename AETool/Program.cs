@@ -457,6 +457,8 @@ namespace AE
                 {
                     Console.WriteLine($"Request failed: {ex.Message}");
                 }
+                Console.ReadKey();
+                goto begin;
             }
         }
     }
