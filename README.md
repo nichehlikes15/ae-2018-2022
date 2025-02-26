@@ -15,6 +15,7 @@
 
 - In order for you to run this software you **must** have [.NET 8.0, version 64x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) installed
 - If you would like the full look of AETool's application, run as admin (if on windows 11).
+- This scraper only support accounts from `2016` to `2022`
 <br>
 
 ## Installation
