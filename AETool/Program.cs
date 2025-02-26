@@ -298,6 +298,16 @@ namespace AE
 
                     if (usernameData != null && playerData != null && playerData.Count > 0)
                     {
+                        Console.Clear();
+                        Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ╔ Lookup ═════════════════════════════════╗", Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ║Player ID:                               ║", Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ╠═════════════════════════════════════════╣", Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ║Username:                                ║", Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ║Displayname:                             ║", Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ║Level:                                   ║", Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ║Date of Creation:                        ║", Color.FromArgb(R, G, B));
+                        Console.WriteLine("                                       ╚═════════════════════════════════════════╝", Color.FromArgb(R, G, B));
                         string usernamestr = usernameData.ContainsKey("username") ? usernameData["username"].ToString() : "N/A";
                         string displayname = usernameData.ContainsKey("displayName") ? usernameData["displayName"].ToString() : "N/A";
                         string level = playerData[0].ContainsKey("level") ? playerData[0]["level"].ToString() : "N/A";
