@@ -532,7 +532,7 @@ namespace AE
 
                                     bool checkJunior = false;
 
-                                    if (playerInfo["isJunior"] != null) {
+                                    if (playerInfo != null && playerInfo.ContainsKey("isJunior") && playerInfo["isJunior"] != null) {
                                         if (playerInfo["isJunior"] is bool isJuniorValue)
                                         {
                                             checkJunior = isJuniorValue;
@@ -582,7 +582,7 @@ namespace AE
                                                             SaveUsernamesToFile(scrapedUsernames);                                                     
                                                             stopwatch.Stop();
                                                             TimeSpan elapsed = stopwatch.Elapsed;
-                                                            Color finishedColor = Color.FromArgb(0, 0, 0);
+                                                            Color finishedColor = Color.FromArgb(237, 228, 104);
                                                             Console.WriteLine("");
                                                             Console.WriteLine($"Finshed scraping usernames with a elapsed time of {elapsed.Minutes} minutes and {elapsed.Seconds} seconds", finishedColor);
                                                             Console.WriteLine("Enjoy testing, with much love from nichehlikes15 <3", finishedColor);
