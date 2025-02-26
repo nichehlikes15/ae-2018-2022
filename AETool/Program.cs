@@ -61,14 +61,28 @@ namespace AE
         private const string ConfigFilePath = "config.json";
         private static dynamic LoadConfig()
         {
+            var defaultConfig = new { amount_of_threads = 1, allow_juniors = false };
+
             if (File.Exists(ConfigFilePath))
             {
                 string json = File.ReadAllText(ConfigFilePath);
-                return JsonConvert.DeserializeObject<dynamic>(json);
+                dynamic config = JsonConvert.DeserializeObject<dynamic>(json);
+
+                var allowedKeys = new HashSet<string> { "amount_of_threads", "allow_juniors" };
+                var configDict = (IDictionary<string, JToken>)config;
+                var configKeys = configDict.Keys.ToHashSet();
+
+                if (!allowedKeys.SetEquals(configKeys))
+                {
+                    Console.WriteLine("Invalid config keys found. Resetting to default...");
+                    SaveConfig(defaultConfig);
+                    return defaultConfig;
+                }
+
+                return config;
             }
             else
             {
-                var defaultConfig = new { amount_of_threads = 1, allow_juniors = false };
                 SaveConfig(defaultConfig);
                 return defaultConfig;
             }
@@ -341,13 +355,14 @@ namespace AE
                 int threadPadding = 32 - threadCount.ToString().Length;
                 bool juniorsCount = config.allow_juniors;
                 int juniorsCountInt = juniorsCount ? 1 : 0;
-                int juniorsPadding = 28 - threadCount.ToString().Length;
+                int juniorsPadding = 26 - juniorsCountInt.ToString().Length;
                 Console.WriteLine("                                       ╔ Settings ════════════════════════════════╗", textColor);
                 Console.WriteLine($"                                       ║ Threads: {threadCount}{new string(' ', threadPadding)}║", textColor);
                 Console.WriteLine($"                                       ║ Allow juniors: {juniorsCountInt}{new string(' ', juniorsPadding)}║", textColor);
                 Console.WriteLine("                                       ╚══════════════════════════════════════════╝", textColor);
                 Console.SetCursorPosition(51 + threadCount.ToString().Length, 8);
                 string threadInput = ReadInput(3);
+                int threadPaddingNew = 32 - threadInput.ToString().Length;
 
                 if (int.TryParse(threadInput, out int newThreadCount) && newThreadCount > 0)
                 {
@@ -356,7 +371,7 @@ namespace AE
                     Console.Clear();
                     Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
                     Console.WriteLine("                                       ╔ Settings ════════════════════════════════╗", textColor);
-                    Console.WriteLine($"                                       ║ Threads: {newThreadCount}{new string(' ', threadPadding)}║", textColor);
+                    Console.WriteLine($"                                       ║ Threads: {newThreadCount}{new string(' ', threadPaddingNew)}║", textColor);
                     Console.WriteLine($"                                       ║ Allow juniors: {juniorsCountInt}{new string(' ', juniorsPadding)}║", textColor);
                     Console.WriteLine("                                       ╚══════════════════════════════════════════╝", textColor);
                 }
@@ -377,22 +392,22 @@ namespace AE
                         Console.Clear();
                         Console.WriteLine(asciiText, Color.FromArgb(R, G, B));
                         Console.WriteLine("                                       ╔ Settings ════════════════════════════════╗", textColor);
-                        Console.WriteLine($"                                       ║ Threads: {newThreadCount}{new string(' ', threadPadding)}║", textColor);
+                        Console.WriteLine($"                                       ║ Threads: {newThreadCount}{new string(' ', threadPaddingNew)}║", textColor);
                         Console.WriteLine($"                                       ║ Allow juniors: {juniorsCountInt}{new string(' ', juniorsPadding)}║", textColor);
                         Console.WriteLine("                                       ╚══════════════════════════════════════════╝", textColor);
 
-                        Console.SetCursorPosition(56 + juniorsCountInt.ToString().Length, 9);
+                        Console.SetCursorPosition(57 + juniorsCountInt.ToString().Length, 9);
                         Console.Write(juniorsInput);
 
                         if (juniorsInput == "1")
                         {
                             Console.Write(" [True]", textColor);
-                            Console.SetCursorPosition(57 + juniorsCountInt.ToString().Length, 9);
+                            Console.SetCursorPosition(58 + juniorsCountInt.ToString().Length, 9);
                         }
                         else if (juniorsInput == "0")
                         {
                             Console.Write(" [False]", textColor);
-                            Console.SetCursorPosition(57 + juniorsCountInt.ToString().Length, 9);
+                            Console.SetCursorPosition(58 + juniorsCountInt.ToString().Length, 9);
                         }
                     }
                 }
@@ -479,67 +494,69 @@ namespace AE
 
                                     bool checkJunior = false;
 
-                                    if (playerInfo["isJunior"] is bool isJuniorValue)
-                                    {
-                                        checkJunior = isJuniorValue;
-                                    }
-                                    else if (playerInfo["isJunior"] is JValue jValue && jValue.Type == JTokenType.Boolean)
-                                    {
-                                        checkJunior = jValue.Value<bool>();
-                                    }
-                                    else if (bool.TryParse(playerInfo["isJunior"]?.ToString(), out bool parsedValue))
-                                    {
-                                        checkJunior = parsedValue;
-                                    }
-
-                                    bool allowJunior = config.allow_junior; 
-
-                                    bool junior = false;
-                                    if (allowJunior || (checkJunior == allowJunior)) 
-                                    {
-                                        junior = true;
-                                    }
-
-                                    if (playerInfo != null && playerInfo.ContainsKey("username") && junior == true)
-                                    {
-                                        playerInfo["Level"] = level;
-                                        string createdAt = playerInfo.ContainsKey("createdAt") ? playerInfo["createdAt"].ToString() : "N/A";
-                                        playerInfo["createdAt"] = createdAt;
-
-                                        string username = playerInfo["username"].ToString();
-
-                                        await semaphore.WaitAsync();
-                                        try
+                                    if (playerInfo["isJunior"] != null) {
+                                        if (playerInfo["isJunior"] is bool isJuniorValue)
                                         {
-                                            lock (lockObject)
+                                            checkJunior = isJuniorValue;
+                                        }
+                                        else if (playerInfo["isJunior"] is JValue jValue && jValue.Type == JTokenType.Boolean)
+                                        {
+                                            checkJunior = jValue.Value<bool>();
+                                        }
+                                        else if (bool.TryParse(playerInfo["isJunior"]?.ToString(), out bool parsedValue))
+                                        {
+                                            checkJunior = parsedValue;
+                                        }
+
+                                        bool allowJunior = config.allow_junior; 
+
+                                        bool junior = false;
+                                        if (allowJunior || (checkJunior == allowJunior)) 
+                                        {
+                                            junior = true;
+                                        }
+
+                                        if (playerInfo != null && playerInfo.ContainsKey("username") && junior == true)
+                                        {
+                                            playerInfo["Level"] = level;
+                                            string createdAt = playerInfo.ContainsKey("createdAt") ? playerInfo["createdAt"].ToString() : "N/A";
+                                            playerInfo["createdAt"] = createdAt;
+
+                                            string username = playerInfo["username"].ToString();
+
+                                            await semaphore.WaitAsync();
+                                            try
                                             {
-                                                if (!uniqueUsernames.Contains(username) && scrapedUsernames.Count < amount)
+                                                lock (lockObject)
                                                 {
-                                                    scrapedUsernames.Add(playerInfo);
-                                                    uniqueUsernames.Add(username);
-
-                                                    string currentTime = DateTime.Now.ToString("HH:mm:ss");
-                                                    Console.WriteLine($"[{currentTime}] {username}  |  Level {level}  |  Created At: {createdAt}");
-
-                                                    localScrapedUsernames.Add(playerInfo);
-
-                                                    if (scrapedUsernames.Count >= amount)
+                                                    if (!uniqueUsernames.Contains(username) && scrapedUsernames.Count < amount)
                                                     {
-                                                        SaveUsernamesToFile(scrapedUsernames);                                                     
-                                                        stopwatch.Stop();
-                                                        TimeSpan elapsed = stopwatch.Elapsed;
-                                                        Color finishedColor = Color.FromArgb(0, 0, 0);
-                                                        Console.WriteLine("");
-                                                        Console.WriteLine($"Finshed scraping usernames with a elapsed time of {elapsed.Minutes} minutes and {elapsed.Seconds} seconds", finishedColor);
-                                                        Console.WriteLine("Enjoy testing, with much love from nichehlikes15 <3", finishedColor);
-                                                        //goto Program.begin; // Exit the method when the target is reached
+                                                        scrapedUsernames.Add(playerInfo);
+                                                        uniqueUsernames.Add(username);
+
+                                                        string currentTime = DateTime.Now.ToString("HH:mm:ss");
+                                                        Console.WriteLine($"[{currentTime}] {username}  |  Level {level}  |  Created At: {createdAt}");
+
+                                                        localScrapedUsernames.Add(playerInfo);
+
+                                                        if (scrapedUsernames.Count >= amount)
+                                                        {
+                                                            SaveUsernamesToFile(scrapedUsernames);                                                     
+                                                            stopwatch.Stop();
+                                                            TimeSpan elapsed = stopwatch.Elapsed;
+                                                            Color finishedColor = Color.FromArgb(0, 0, 0);
+                                                            Console.WriteLine("");
+                                                            Console.WriteLine($"Finshed scraping usernames with a elapsed time of {elapsed.Minutes} minutes and {elapsed.Seconds} seconds", finishedColor);
+                                                            Console.WriteLine("Enjoy testing, with much love from nichehlikes15 <3", finishedColor);
+                                                            //goto Program.begin; // Exit the method when the target is reached
+                                                        }
                                                     }
                                                 }
                                             }
-                                        }
-                                        finally
-                                        {
-                                            semaphore.Release();
+                                            finally
+                                            {
+                                                semaphore.Release();
+                                            }
                                         }
                                     }
                                 }
