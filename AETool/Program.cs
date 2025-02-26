@@ -534,7 +534,7 @@ namespace AE
                                             checkJunior = parsedValue;
                                         }
 
-                                        bool allowJunior = config.allow_junior; 
+                                        bool allowJunior = config.allow_juniors; 
 
                                         bool junior = false;
                                         if (allowJunior || (checkJunior == allowJunior)) 
