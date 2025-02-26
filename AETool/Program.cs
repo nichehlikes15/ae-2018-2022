@@ -432,6 +432,32 @@ namespace AE
             {
                 Environment.Exit(0);
             }
+            else if (input == "6")
+            {
+                Console.WriteLine("Welcome to the super secret test mode, this is your response from Google:");
+
+                using HttpClient client = new HttpClient();
+                string url = "https://httpstat.us/200";
+
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine("Response from server: " + responseContent);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error retrieving player data: {response.StatusCode}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Request failed: {ex.Message}");
+                }
+            }
         }
     }
     public class Scraper
